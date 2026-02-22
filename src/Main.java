@@ -44,26 +44,26 @@ public class Main {
 
         //Первый вариант с циклом do-while
         int budget = 2275;
-        int dayCounter = 1;
+        int dayCounter = 0;
 
         do {
-            if (dayCounter % 5 == 0) {
-                dayCounter++;
-                continue;
-            }
-            budget -= dailyPayment;
             dayCounter++;
-        } while (budget - dailyPayment >= dailyPayment);
+            if (dayCounter % 5 != 0) {
+                budget -= dailyPayment;
+            }
+        } while (budget >= dailyPayment);
         System.out.println("Автомобиль можно оставить на " + dayCounter + " дней.");
         System.out.println("--------");
 
         //Второй вариант с циклом for
         budget = 2275;
-        dayCounter = 1;
+        dayCounter = 0;
 
-        for (; budget - dailyPayment >= dailyPayment; dayCounter++){
-            if (dayCounter % 5 == 0) continue;
-            budget -= dailyPayment;
+        for (; budget >= dailyPayment; ){
+            dayCounter++;
+            if (dayCounter % 5 != 0) {
+                budget -= dailyPayment;
+            }
         }
         System.out.println("Автомобиль можно оставить на " + dayCounter + " дней!");
         System.out.println();
@@ -87,7 +87,9 @@ public class Main {
             total += 15000;
             System.out.println(month + "-й месяц: " + total + " ₽");
 
-            if (total >= 12000000L) break;
+            if (total >= 12000000L) {
+                break;
+            }
         } while (true);
         System.out.println();
 
@@ -120,7 +122,9 @@ public class Main {
             }
 
             charge += 2;
-            if (charge > 100) charge = 100;
+            if (charge > 100) {
+                charge = 100;
+            }
         }
 
         System.out.println("Время зарядки составило " + minute + " минут");
