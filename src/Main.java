@@ -42,16 +42,17 @@ public class Main {
         */
         int dailyPayment = 100;
 
-        //Первый вариант с циклом do-while
+        //Первый вариант с циклом while
         int budget = 2275;
         int dayCounter = 0;
 
-        do {
+        while (budget >= dailyPayment) {
             dayCounter++;
-            if (dayCounter % 5 != 0) {
-                budget -= dailyPayment;
+            if (dayCounter % 5 == 0) {
+                continue;
             }
-        } while (budget >= dailyPayment);
+            budget -= dailyPayment;
+        }
         System.out.println("Автомобиль можно оставить на " + dayCounter + " дней.");
         System.out.println("--------");
 
@@ -61,9 +62,10 @@ public class Main {
 
         for (; budget >= dailyPayment; ){
             dayCounter++;
-            if (dayCounter % 5 != 0) {
-                budget -= dailyPayment;
+            if (dayCounter % 5 == 0) {
+                continue;
             }
+            budget -= dailyPayment;
         }
         System.out.println("Автомобиль можно оставить на " + dayCounter + " дней!");
         System.out.println();
